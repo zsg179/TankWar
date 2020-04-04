@@ -8,8 +8,8 @@ import java.awt.event.KeyEvent;
  * @Version :1.0
  */
 public class Tank {
-    public static final int XSPEED = 5;
-    public static final int YSPEED = 5;
+    public static final int XSPEED = 20;
+    public static final int YSPEED = 20;
     private int x, y;
     private boolean bL = false, bU = false, bR = false, bD = false;
 
@@ -43,6 +43,10 @@ public class Tank {
                 y -= YSPEED;
                 break;
             case RU:
+                x += XSPEED;
+                y -= YSPEED;
+                break;
+            case R:
                 x += XSPEED;
                 break;
             case RD:
@@ -90,6 +94,25 @@ public class Tank {
         else if (!bL && !bU && !bR && bD) dir = Direction.D;
         else if (bL && !bU && !bR && bD) dir = Direction.LD;
         else if (!bL && !bU && !bR && !bD) dir = Direction.STOP;
+    }
+
+    public void keyReleased(KeyEvent e) {
+        int keyCode = e.getKeyCode();
+        switch (keyCode) {
+            case KeyEvent.VK_LEFT:
+                bL = false;
+                break;
+            case KeyEvent.VK_UP:
+                bU = false;
+                break;
+            case KeyEvent.VK_RIGHT:
+                bR = false;
+                break;
+            case KeyEvent.VK_DOWN:
+                bD = false;
+                break;
+        }
+        locateDirection();
     }
 
 }
