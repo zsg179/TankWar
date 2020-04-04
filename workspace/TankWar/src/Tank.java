@@ -14,7 +14,6 @@ public class Tank {
         this.x = x;
         this.y = y;
     }
-
     public void draw(Graphics g) {
         Color c = g.getColor();
         g.setColor(Color.RED);
